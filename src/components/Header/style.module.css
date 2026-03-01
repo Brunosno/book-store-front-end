@@ -1,0 +1,88 @@
+.container{
+    width: 100dvw;
+    height: 80px;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    position: fixed;
+    z-index: 10;
+
+    .header{
+        width: 95%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 auto;
+
+        .logo_title{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+
+            .logo_box{
+                background-color: #FF6D00;
+                width: 50px;
+                height: 50px;
+                border-radius: 25%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        .menu_link{
+            position: relative;
+            color: #FF6D00;
+
+            &::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -4px;
+                width: 0;
+                height: 2px;
+                background-color: #FF6D00;
+                transition: width 0.3s ease;
+            }
+
+            &:hover::after {
+                width: 100%;
+            }
+        }
+
+        .user_info{
+            display: flex;
+            gap: 25px;
+
+            span{
+                position: relative;
+                height: 40px;
+                min-width: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 12px;
+                cursor: pointer;
+
+                &:hover{
+                    background-color: #ccc;
+                }
+
+                small{
+                    font-size: 10px;
+                    font-weight: bold;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    background-color: #FF6D00;
+                    padding: 4px 6px;
+                    border-radius: 50%;
+                }
+           }
+        }
+    }
+}

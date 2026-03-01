@@ -8,17 +8,18 @@ const AuthService = {
         if (data?.token) {
             localStorage.setItem('authToken', data.token);
         }
-        
+
         return data;
     },
 
-    async register(payload: AuthLoginDTO) {
-        try {
-            const { data } = await api.post('/auth/register', payload);
+    async register(payload: AuthLoginDTO): Promise<AuthResponseDTO>{
+        const { data } = await api.post<AuthResponseDTO>('/auth/register', payload);
+
+        if (data?.token) {
             localStorage.setItem('authToken', data.token);
-        } catch (error) {
-            console.error('Registration failed:', error);
         }
+
+        return data;
     },
 
     async logout() {

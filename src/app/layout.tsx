@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ToastCard from "@/components/toastify/ToastCard";
+import { AuthProvider } from '@/context/AuthContext';
+import { CartProvider } from "@/context/CartContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,8 +28,12 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
-        <ToastCard/>
+        <AuthProvider>
+          <CartProvider>
+            {children}
+            <ToastCard/>
+          </CartProvider>
+        </AuthProvider>
       </body>
     </html>
   );

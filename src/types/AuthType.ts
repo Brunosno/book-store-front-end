@@ -5,6 +5,15 @@ export type AuthLoginDTO = {
     };
 };
 
+export type AuthRegisterDTO = {
+    auth: {
+        email: string;
+        password: string;
+        username: string;
+        name: string;
+    };
+};
+
 export type AuthResponseDTO = {
     id: number;
     username: string;

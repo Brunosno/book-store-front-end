@@ -1,0 +1,58 @@
+.container{
+    width: 100dvw;
+    min-height: 100dvh;
+    background-color: #fae0ca;
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+
+    h1{
+        color: black;
+        margin-top: 12px;
+        margin-left: 35px;
+    }
+
+    .search_input{
+        width: 95%;
+        height: 100px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        .search_icon{
+            position: absolute;
+            left: 20px;
+            color: #888;
+            pointer-events: none;
+        }
+
+        input{
+            width: 100%;
+            padding: 12px 20px 12px 50px;
+            border: none;
+            border-radius: 12px;
+            color: black;
+            background-color: ghostwhite;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            outline: none;
+            transition: all 0.2s ease;
+
+            &:focus{
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            }
+        }
+    }
+
+    .books_container{
+        width: 95%;
+        margin: 20px auto;
+
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+
+        justify-items: center;
+    }
+}
