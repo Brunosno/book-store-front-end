@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Book Store - Login",
+  title: "Book Store",
   description: "A simple book store application",
 };
 

@@ -15,8 +15,11 @@ export type AuthRegisterDTO = {
 };
 
 export type AuthResponseDTO = {
-    id: number;
-    username: string;
-    is_admin: boolean;
-    token: string;
+    data: {
+        id: number;
+        username: string;
+        is_admin: boolean;
+        token: string;
+    },
+    message?: string;
 };

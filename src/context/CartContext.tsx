@@ -26,7 +26,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
     useEffect(() => {
         if (user) {
-            setCart(CartService.getCart(user.id));
+            setCart(CartService.getCart(user?.data.id));
         } else {
             setCart([]);
         }
@@ -38,7 +38,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
             return;
         }
 
-        const updatedCart = CartService.addItem(product, user.id);
+        const updatedCart = CartService.addItem(product, user?.data.id);
         setCart([...updatedCart]);
 
         toast.success(`"${product.title}" adicionado ao carrinho!`);
@@ -47,7 +47,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     function removeItem(productId: number) {
         if (!user) return;
 
-        const updatedCart = CartService.removeItem(productId, user.id);
+        const updatedCart = CartService.removeItem(productId, user?.data.id);
         setCart([...updatedCart]);
 
         toast.info("Produto removido do carrinho.");
@@ -56,16 +56,14 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     function updateQuantity(productId: number, quantity: number) {
         if (!user) return;
 
-        const updatedCart = CartService.updateQuantity(productId, quantity, user.id);
+        const updatedCart = CartService.updateQuantity(productId, quantity, user?.data.id);
         setCart([...updatedCart]);
-
-        toast.success("Quantidade atualizada.");
     }
 
     function clearCart() {
         if (!user) return;
 
-        CartService.clearCart(user.id);
+        CartService.clearCart(user?.data.id);
         setCart([]);
 
         toast.warn("Carrinho esvaziado.");

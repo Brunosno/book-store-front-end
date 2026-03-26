@@ -9,20 +9,22 @@ import { BookResponse } from '@/types/BookType';
 import { Search } from 'lucide-react';
 
 export default function Home(){
-
     const [books, setBooks] = useState<BookResponse[]>([]);
     const [search, setSearch] = useState("");
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function loadBooks(){
             try{
+                setLoading(true);
                 const { data } = await BookService.findAll();
-                console.log(data)
 
                 const active_books = data.filter((book: BookResponse) => book.available);
                 setBooks(active_books);
             } catch(error){
                 console.error(error);
+            } finally {
+                setLoading(false);
             }
         }
 
@@ -50,12 +52,18 @@ export default function Home(){
                 </div>
 
                 <div className={style.books_container}>
-                    {filteredBooks.map((book) => (
-                        <CardProduct
-                            key={book.id}
-                            product={book}
-                        />
-                    ))}
+                    {loading ? (
+                        <div className={style.spinner_container}>
+                            <div className={style.spinner}></div>
+                        </div>
+                    ) : (
+                        filteredBooks.map((book) => (
+                            <CardProduct
+                                key={book.id}
+                                product={book}
+                            />
+                        ))
+                    )}
                 </div>
             </div>
         </>

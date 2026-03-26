@@ -11,7 +11,6 @@ import AuthService from "@/services/AuthService";
 import { authLoginSchema, authRegisterSchema } from "@/schemas/AuthSchema";
 import { ZodError } from "zod";
 import { toast } from "react-toastify";
-import CartService from "@/services/CartService";
 import { useAuth } from "@/context/AuthContext";
 
 export default function AuthCard() {
@@ -83,7 +82,6 @@ export default function AuthCard() {
     if (data) {
       toast.success("Login realizado com sucesso!");
       loginContext(data);
-      CartService.saveCart([], data.id);
       router.push('/home');
       }
 

@@ -5,8 +5,8 @@ const AuthService = {
     async login(payload: AuthLoginDTO): Promise<AuthResponseDTO> {
         const { data } = await api.post<AuthResponseDTO>('/auth/login', payload);
 
-        if (data?.token) {
-            localStorage.setItem('authToken', data.token);
+        if (data?.data.token) {
+            localStorage.setItem('authToken', data?.data.token);
         }
 
         return data;
@@ -15,8 +15,8 @@ const AuthService = {
     async register(payload: AuthLoginDTO): Promise<AuthResponseDTO>{
         const { data } = await api.post<AuthResponseDTO>('/auth/register', payload);
 
-        if (data?.token) {
-            localStorage.setItem('authToken', data.token);
+        if (data?.data.token) {
+            localStorage.setItem('authToken', data?.data.token);
         }
 
         return data;

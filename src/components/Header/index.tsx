@@ -20,6 +20,10 @@ export default function Header(){
         router.push('/auth/login')
     }
 
+    const userInfo = () => {
+        console.log(user)
+    }
+
     return(
         <div className={style.container}>
             <div className={style.header}>
@@ -33,7 +37,7 @@ export default function Header(){
                 <Link href='/home' className={style.menu_link}>Catálogo</Link>
 
                 <div className={style.user_info}>
-                    <span>{user ? user.username : <User />}</span>
+                    <span onClick={userInfo}>{user ? user?.data?.username : <User />}</span>
 
                     <span onClick={() => router.push('/cart')}><ShoppingCart /> <small>{totalItems}</small></span>
 
