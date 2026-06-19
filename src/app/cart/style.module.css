@@ -134,6 +134,19 @@
     transform: scale(0.98);
 }
 
+.checkout_btn:disabled {
+    background: #ccc;
+    color: #777;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+.checkout_btn:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
 .spinner_container{
     position: absolute;
     width: 100%;
